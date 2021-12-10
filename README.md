@@ -7,7 +7,9 @@ An exploration of Godot in 3D.
 Built using Godot 3.3.3
 
 Extra Features:
-- NA
+- Custom Skybox
+- Graphical details (Reflections, SSAO, Fog)
+- PBR Textures
 
 
 ## References
