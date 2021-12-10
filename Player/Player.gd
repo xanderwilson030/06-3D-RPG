@@ -2,6 +2,8 @@ extends KinematicBody
 
 onready var Camera = get_node("/root/Game/Player/Camera")
 onready var Pivot = get_node("/root/Game/Player/Pivot")
+onready var Credits = get_node("/root/Game/Credits")
+onready var BoxesLeft = get_node("/root/Game/BoxesLeft")
 
 
 #var velocity = Vector3()
@@ -13,6 +15,8 @@ var mouse_sensitivity = 0.002
 var jump = 2
 var jumping = false
 var isMoving
+var boxesLeft = 25
+var score = 0
 
 export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -26,13 +30,38 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	
+	if (boxesLeft == 0):
+		var _scene = get_tree().change_scene("res://UI/Win.tscn")
+		
+	
 	if Input.is_action_just_pressed("shoot"):
 		$AnimationTree.active = false
 		$AnimationPlayer.play("Shoot")
 		isMoving = 0
+		print("Part one worksin")
+		
+		$GunShoot.play()
+		
+		if $RayCast.is_colliding():
+			print("turue")
+			var target = $RayCast.get_collider()
+			print(target.name)
+			if target.is_in_group("targets"):
+				#var explosion = Explosion.instance()
+				#Explosions.add_child(explosion)
+				#explosion.global_transform.origin = $Pivot/RayCast.get_collision_point()
+				print("It works")
+				boxesLeft -= 1
+				score += 10
+				BoxesLeft.text = "Boxes Left: " + str(boxesLeft)
+				Credits.text = "Space Credits (Score): " + str(score)
+				
+				target.die()
 		
 		yield($AnimationPlayer, "animation_finished")
-		$AnimationPlayer.play("Walk")
+		#$AnimationPlayer.play("Walk")
+		$AnimationTree.active = true
 
 	#$AnimationTree.active = true
 	

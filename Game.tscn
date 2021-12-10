@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Game.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Jellee-Bold.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Environment.tres" type="Environment" id=7]
+[ext_resource path="res://Box/Box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/ump45-1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/08 - Mass Effect Score_ The Presidium.wav" type="AudioStream" id=10]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 25, 25 )
@@ -40,6 +43,13 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="Theme" id=11]
 default_font = SubResource( 10 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 14
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 12 )
 
 [node name="Game" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9929, -1.36783, 8.37406 )
@@ -86,13 +96,26 @@ environment = ExtResource( 7 )
 current = true
 
 [node name="Pivot" type="Position3D" parent="Player"]
-transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -6.50362e-07, 0, 1.99595 )
+transform = Transform( -1, -3.25684e-07, 1.01212e-08, 0, 0.0310619, 0.999517, -3.25841e-07, 0.999517, -0.0310619, 0, 1.89121, -1.01996 )
+
+[node name="RayCast" type="RayCast" parent="Player"]
+transform = Transform( 0.999192, -0.0401643, 0.00124818, -1.04774e-09, 0.0310619, 0.999518, -0.0401837, -0.998711, 0.0310368, -0.158381, 2.02442, 2.26477 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 65535
+collide_with_areas = true
+debug_shape_custom_color = Color( 0.0352941, 0.411765, 1, 1 )
+debug_shape_thickness = 5.0
+
+[node name="GunShoot" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 9 )
+volume_db = -12.236
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 232.61, -11.2509, 1.46756 )
 
 [node name="scene" parent="MeshInstance" instance=ExtResource( 4 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -220.376, 10.4676, -14.0401 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -220.385, 10.5213, -14.0407 )
 
 [node name="Zombie" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.679569, 0, 0.733611, 0, 1, 0, -0.733611, 0, 0.679569, 6.32121, -0.728892, 5.00671 )
@@ -127,7 +150,20 @@ margin_top = 3.0
 margin_right = 1018.0
 margin_bottom = 56.0
 theme = SubResource( 11 )
-text = "Boxes Left: 10"
+text = "Boxes Left: 25"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 697.0
+margin_top = 9.0
+margin_right = 890.0
+margin_bottom = 52.0
+theme = SubResource( 13 )
+text = "Space Credits (Score): 0"
 align = 1
 valign = 1
 __meta__ = {
@@ -136,3 +172,85 @@ __meta__ = {
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 7 )
+
+[node name="Targets" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.76172 )
+
+[node name="StaticBody" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, -7.19484, 1.59029, -9.21636 )
+
+[node name="StaticBody15" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, -8.53271, 1.59029, 9.31363 )
+
+[node name="StaticBody16" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, -2.5388, 1.59029, 9.40846 )
+
+[node name="StaticBody17" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 0.312437, 1.59029, -0.0863352 )
+
+[node name="StaticBody18" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 2.52244, 1.59029, 7.8546 )
+
+[node name="StaticBody19" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 5.08225, 1.59029, -3.6625 )
+
+[node name="StaticBody20" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 10.2665, 1.59029, -3.43959 )
+
+[node name="StaticBody21" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 16.7307, 1.59029, -4.20288 )
+
+[node name="StaticBody22" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -2.2428, 0, -1.99244, 0, 6, 0, 1.99244, 0, -2.2428, 23.1828, 1.59029, 4.18223 )
+
+[node name="StaticBody23" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -2.2428, 0, -1.99244, 0, 6, 0, 1.99244, 0, -2.2428, 39.3843, 1.5903, 5.73902 )
+
+[node name="StaticBody24" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -2.2428, 0, -1.99244, 0, 6, 0, 1.99244, 0, -2.2428, 30.2041, 1.5903, 10.9 )
+
+[node name="StaticBody25" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -2.2428, 0, -1.99244, 0, 6, 0, 1.99244, 0, -2.2428, 22.6686, 1.5903, 12.9889 )
+
+[node name="StaticBody2" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, -3.7757, 1.59029, -9.21636 )
+
+[node name="StaticBody3" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 6, 0, 0, 0, 3, 0.0428286, 1.59029, -9.21636 )
+
+[node name="StaticBody4" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30924, 0, -1.91505, 0, 6, 0, 1.91505, 0, 2.30924, 0.0428286, 1.59029, -18.8769 )
+
+[node name="StaticBody5" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30924, 0, -1.91505, 0, 6, 0, 1.91505, 0, 2.30924, -0.825282, 1.59029, -28.4598 )
+
+[node name="StaticBody6" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30924, 0, -1.91505, 0, 6, 0, 1.91505, 0, 2.30924, 6.36295, 1.59029, -26.3018 )
+
+[node name="StaticBody7" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -1.46166, 0, -2.61984, 0, 6, 0, 2.61984, 0, -1.46166, 16.6074, 1.59029, -29.3108 )
+
+[node name="StaticBody8" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -1.46166, 0, -2.61984, 0, 6, 0, 2.61984, 0, -1.46166, 20.1238, 1.59029, -22.7162 )
+
+[node name="StaticBody9" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -1.46166, 0, -2.61984, 0, 6, 0, 2.61984, 0, -1.46166, 11.7445, 1.59029, -20.6814 )
+
+[node name="StaticBody10" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( -1.46166, 0, -2.61984, 0, 6, 0, 2.61984, 0, -1.46166, 26.8746, 1.59029, -14.7026 )
+
+[node name="StaticBody11" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30052, 0, -1.92551, 0, 6, 0, 1.92551, 0, 2.30052, 38.4283, 1.59029, -13.2814 )
+
+[node name="StaticBody12" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30052, 0, -1.92551, 0, 6, 0, 1.92551, 0, 2.30052, 38.4283, 1.59029, -13.2814 )
+
+[node name="StaticBody13" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30052, 0, -1.92551, 0, 6, 0, 1.92551, 0, 2.30052, 41.5021, 1.5903, -6.56641 )
+
+[node name="StaticBody14" parent="Targets" instance=ExtResource( 8 )]
+transform = Transform( 2.30052, 0, -1.92551, 0, 6, 0, 1.92551, 0, 2.30052, 31.6654, 1.5903, -6.47743 )
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
