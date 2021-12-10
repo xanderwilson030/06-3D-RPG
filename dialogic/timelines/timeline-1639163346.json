@@ -1,0 +1,65 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1639163214.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1639163182.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1639163214.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How did you get in here? Nevermind that, you're the janitor, right? Someone needs to clean up this mess ASAP!"
+		},
+		{
+			"character": "character-1639163182.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What mess? You mean all those boxes?"
+		},
+		{
+			"character": "character-1639163214.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Obviously! We have to get this place ready for ZombieCon 2022"
+		},
+		{
+			"character": "character-1639163182.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Okay.... sure"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639163346.json",
+		"name": "Conversation"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"color": "#ff00ff0a",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1639163182.json",
+	"mirror_portraits": false,
+	"name": "Player",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": -20,
+	"offset_y": -175,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Assets/Player_Portrait.png"
+		}
+	],
+	"scale": 50
+}

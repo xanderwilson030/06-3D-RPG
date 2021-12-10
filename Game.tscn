@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/Zombie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/space_station_scene_hd/scene.gltf" type="PackedScene" id=4]
+[ext_resource path="res://Game.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Jellee-Bold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Environment.tres" type="Environment" id=7]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 25, 25 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.184314, 0.376471, 0.203922, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, -12.5 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 53.6591, 18.3572, 2.26239 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.00546448, 0.382514, 0.562842, 0.644809, 0.956284 )
+colors = PoolColorArray( 0.0390625, 0.391907, 1, 1, 0.896115, 0.93426, 1, 0.108108, 1, 1, 1, 0, 1, 1, 1, 0, 0.0078125, 0, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 10 )
+
+[node name="Game" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9929, -1.36783, 8.37406 )
+script = ExtResource( 5 )
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+visible = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+transform = Transform( 1000, 0, 0, 0, 1, 0, 0, 0, 1000, 9.68613, -1.2331, -6.63934 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Ground"]
+transform = Transform( -0.169097, 0, 0.993177, 0, 1, 0, -1.44011, 0, -0.116619, -29.2432, 1.90588, -11.1385 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Ground"]
+transform = Transform( -0.169097, 0, 0.993177, 0, 1, 0, -1.44011, 0, -0.116619, -29.2432, 1.90588, -11.1385 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Ground"]
+transform = Transform( -0.169097, 0, 0.993177, 0, 1, 0, -1.44011, 0, -0.116619, 45.94, 1.90588, -11.1385 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Ground"]
+transform = Transform( 1.44969, 0, -0.0207852, 0, 1, 0, 0.0301386, 0, 0.999784, 4.22831, -8.58048, 14.3521 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Ground"]
+transform = Transform( 1.44969, 0, -0.0207852, 0, 1, 0, 0.0301386, 0, 0.999784, 5.1488, 17.1957, -39.3128 )
+shape = SubResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 9.57446, -0.717365, 8.34713 )
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( -1, -1.05879e-07, 3.08159e-07, 0, 0.945734, 0.324941, -3.25841e-07, 0.324941, -0.945734, 1.08445e-06, 5.39732, -3.32817 )
+environment = ExtResource( 7 )
+current = true
+
+[node name="Pivot" type="Position3D" parent="Player"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -6.50362e-07, 0, 1.99595 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 232.61, -11.2509, 1.46756 )
+
+[node name="scene" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -220.376, 10.4676, -14.0401 )
+
+[node name="Zombie" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.679569, 0, 0.733611, 0, 1, 0, -0.733611, 0, 0.679569, 6.32121, -0.728892, 5.00671 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 5 )
+margin_top = 2.0
+margin_right = 146.0
+margin_bottom = 63.0
+rect_scale = Vector2( 7, 1 )
+texture = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 215.0
+margin_bottom = 65.0
+theme = SubResource( 9 )
+text = "Objective: 
+Clean the room!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxesLeft" type="Label" parent="."]
+margin_left = 874.0
+margin_top = 3.0
+margin_right = 1018.0
+margin_bottom = 56.0
+theme = SubResource( 11 )
+text = "Boxes Left: 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
