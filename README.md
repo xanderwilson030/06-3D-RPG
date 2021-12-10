@@ -17,11 +17,7 @@ Extra Features:
 
 
 ## References
-The blaster and target models are from the [Blaster Kit](https://kenney.nl/assets/blaster-kit) at kenney.nl.
-
-The smoke particle assets were downloaded from [opengameart.org](https://opengameart.org/sites/default/files/Smoke30Frames_0.png)
-
-The explosion animation was also downloaded from [opengameart.org](https://opengameart.org/content/explosion-sheet)
+The blaster model is from the [Blaster Kit](https://kenney.nl/assets/blaster-kit) at kenney.nl.
 
 The skybox is from AllSky Free (Godot Version) [allsky.com](https://godotengine.org/asset-library/asset/579)
 
