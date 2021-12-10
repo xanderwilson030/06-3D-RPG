@@ -11,6 +11,8 @@ Extra Features:
 - Graphical details (Reflections, SSAO, Fog)
 - PBR Textures
 - Weapon Shooting Noise
+- Background Music
+- Main Menu (Juicy)
 
 
 ## References
@@ -23,6 +25,8 @@ The explosion animation was also downloaded from [opengameart.org](https://openg
 The skybox is from AllSky Free (Godot Version)[allsky.com](https://godotengine.org/asset-library/asset/579)
 
 The space station model was downloaded from[sketchfab.com](https://sketchfab.com/3d-models/space-station-scene-hd-854c32b570d8498fa0cca4fe3350ccf9)
+
+The background music is[Mass Effect 1 Theme](https://www.youtube.com/watch?v=W2CzIcNwvTw)
 
 ## Future Development
 None
