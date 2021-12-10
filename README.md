@@ -10,6 +10,7 @@ Extra Features:
 - Custom Skybox
 - Graphical details (Reflections, SSAO, Fog)
 - PBR Textures
+- Weapon Shooting Noise
 
 
 ## References
